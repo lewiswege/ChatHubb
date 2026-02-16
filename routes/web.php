@@ -4,7 +4,7 @@ use App\Http\Controllers\Webhooks\SimulatorWebhookController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/admin');
 });
 
 // Webhook routes (public, no auth, verified by signature)

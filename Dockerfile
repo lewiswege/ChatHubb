@@ -19,11 +19,12 @@ RUN apk add --no-cache \
     npm \
     oniguruma-dev \
     freetype-dev \
-    libjpeg-turbo-dev
+    libjpeg-turbo-dev \
+    icu-dev
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip opcache
+    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd zip opcache intl
 
 # Install Redis extension
 RUN apk add --no-cache pcre-dev $PHPIZE_DEPS \

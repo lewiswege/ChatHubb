@@ -307,7 +307,7 @@ Built with Laravel framework - [MIT License](https://opensource.org/licenses/MIT
 
 <div align="center">
 
-### 🌟 Made with Laravel, FilamentPHP, and lots of ☕
+### 🌟 Made with Laravel, FilamentPHP, and lots of ☕, (Tea not coffee)
 
 **[⬆ Back to Top](#-chathubb)**
 

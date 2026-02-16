@@ -4,6 +4,10 @@ set -e
 
 echo "Starting ChatHub deployment..."
 
+# Configure Nginx to use Heroku's PORT
+echo "Configuring Nginx for port $PORT..."
+sed -i "s/listen 8080;/listen ${PORT:-8080};/" /etc/nginx/http.d/default.conf
+
 # Wait for database to be ready
 echo "Waiting for database..."
 sleep 5

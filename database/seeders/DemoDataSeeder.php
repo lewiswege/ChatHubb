@@ -34,6 +34,7 @@ class DemoDataSeeder extends Seeder
 
         // Demo customers and conversations
         $demoData = [
+            // 3 Simulator Conversations
             [
                 'customer' => ['name' => 'John Smith', 'phone' => '+1234567890'],
                 'channel' => ChannelType::SIMULATOR,
@@ -46,28 +47,6 @@ class DemoDataSeeder extends Seeder
                     ['dir' => 'out', 'content' => 'I can see your modem is offline. Can you try unplugging it for 30 seconds?', 'time' => now()->subHours(2)->addMinutes(6)],
                     ['dir' => 'in', 'content' => 'Ok, I unplugged it and plugged it back in', 'time' => now()->subHour()],
                     ['dir' => 'in', 'content' => 'Still not working though', 'time' => now()->subMinutes(30)],
-                ],
-            ],
-            [
-                'customer' => ['name' => 'Emily Chen', 'phone' => '+1987654321'],
-                'channel' => ChannelType::WHATSAPP,
-                'status' => ConversationStatus::RESOLVED,
-                'agent' => $agent2,
-                'unread' => 0,
-                'messages' => [
-                    ['dir' => 'in', 'content' => 'What are your business hours?', 'time' => now()->subDay()],
-                    ['dir' => 'out', 'content' => 'We are open Monday-Friday 9AM-6PM, Saturday 10AM-4PM.', 'time' => now()->subDay()->addMinutes(3)],
-                    ['dir' => 'in', 'content' => 'Perfect, thank you!', 'time' => now()->subDay()->addMinutes(5)],
-                ],
-            ],
-            [
-                'customer' => ['name' => 'Michael Brown', 'phone' => '+1555123456'],
-                'channel' => ChannelType::TELEGRAM,
-                'status' => ConversationStatus::NEW,
-                'agent' => null,
-                'unread' => 1,
-                'messages' => [
-                    ['dir' => 'in', 'content' => 'I need to upgrade my plan', 'time' => now()->subMinutes(5)],
                 ],
             ],
             [
@@ -94,6 +73,87 @@ class DemoDataSeeder extends Seeder
                     ['dir' => 'out', 'content' => 'Let me review your account. One moment please.', 'time' => now()->subHours(3)->addMinutes(1)],
                     ['dir' => 'out', 'content' => 'I see you had some international calls this month. That added $45 to your bill.', 'time' => now()->subHours(3)->addMinutes(3)],
                     ['dir' => 'in', 'content' => 'Oh I see, can you show me the details?', 'time' => now()->subMinutes(15)],
+                ],
+            ],
+
+            // 3 WhatsApp Conversations
+            [
+                'customer' => ['name' => 'Emily Chen', 'phone' => '+1987654321'],
+                'channel' => ChannelType::WHATSAPP,
+                'status' => ConversationStatus::RESOLVED,
+                'agent' => $agent2,
+                'unread' => 0,
+                'messages' => [
+                    ['dir' => 'in', 'content' => 'What are your business hours?', 'time' => now()->subDay()],
+                    ['dir' => 'out', 'content' => 'We are open Monday-Friday 9AM-6PM, Saturday 10AM-4PM.', 'time' => now()->subDay()->addMinutes(3)],
+                    ['dir' => 'in', 'content' => 'Perfect, thank you!', 'time' => now()->subDay()->addMinutes(5)],
+                ],
+            ],
+            [
+                'customer' => ['name' => 'David Martinez', 'phone' => '+1777888999'],
+                'channel' => ChannelType::WHATSAPP,
+                'status' => ConversationStatus::IN_PROGRESS,
+                'agent' => $agent1,
+                'unread' => 3,
+                'messages' => [
+                    ['dir' => 'in', 'content' => 'Hello! I placed an order yesterday but haven\'t received confirmation', 'time' => now()->subHours(6)],
+                    ['dir' => 'out', 'content' => 'Hi David! Let me look that up for you. What\'s your order number?', 'time' => now()->subHours(6)->addMinutes(2)],
+                    ['dir' => 'in', 'content' => '#ORD-12345', 'time' => now()->subHours(6)->addMinutes(3)],
+                    ['dir' => 'out', 'content' => 'Found it! Your order is confirmed and will ship tomorrow. You should receive tracking info by email.', 'time' => now()->subHours(5)],
+                    ['dir' => 'in', 'content' => 'Great! What carrier will you use?', 'time' => now()->subMinutes(45)],
+                    ['dir' => 'in', 'content' => 'And estimated delivery time?', 'time' => now()->subMinutes(44)],
+                    ['dir' => 'in', 'content' => 'Sorry for so many questions!', 'time' => now()->subMinutes(43)],
+                ],
+            ],
+            [
+                'customer' => ['name' => 'Jessica Anderson', 'phone' => '+1222333444'],
+                'channel' => ChannelType::WHATSAPP,
+                'status' => ConversationStatus::NEW,
+                'agent' => null,
+                'unread' => 2,
+                'messages' => [
+                    ['dir' => 'in', 'content' => 'Do you ship internationally?', 'time' => now()->subMinutes(10)],
+                    ['dir' => 'in', 'content' => 'Specifically to Canada', 'time' => now()->subMinutes(9)],
+                ],
+            ],
+
+            // 3 Telegram Conversations
+            [
+                'customer' => ['name' => 'Michael Brown', 'phone' => '+1555123456'],
+                'channel' => ChannelType::TELEGRAM,
+                'status' => ConversationStatus::NEW,
+                'agent' => null,
+                'unread' => 1,
+                'messages' => [
+                    ['dir' => 'in', 'content' => 'I need to upgrade my plan', 'time' => now()->subMinutes(5)],
+                ],
+            ],
+            [
+                'customer' => ['name' => 'Anna Kowalski', 'phone' => '+1666777888'],
+                'channel' => ChannelType::TELEGRAM,
+                'status' => ConversationStatus::RESOLVED,
+                'agent' => $agent2,
+                'unread' => 0,
+                'messages' => [
+                    ['dir' => 'in', 'content' => 'I forgot my password, can you help?', 'time' => now()->subHours(8)],
+                    ['dir' => 'out', 'content' => 'Of course! I\'ll send you a password reset link to your email.', 'time' => now()->subHours(8)->addMinutes(1)],
+                    ['dir' => 'out', 'content' => 'The link has been sent to a***@gmail.com. Please check your inbox.', 'time' => now()->subHours(8)->addMinutes(2)],
+                    ['dir' => 'in', 'content' => 'Got it! Thanks so much', 'time' => now()->subHours(8)->addMinutes(5)],
+                    ['dir' => 'out', 'content' => 'You\'re welcome! Let me know if you need anything else.', 'time' => now()->subHours(8)->addMinutes(6)],
+                ],
+            ],
+            [
+                'customer' => ['name' => 'Kevin Park', 'phone' => '+1999888777'],
+                'channel' => ChannelType::TELEGRAM,
+                'status' => ConversationStatus::IN_PROGRESS,
+                'agent' => $agent1,
+                'unread' => 1,
+                'messages' => [
+                    ['dir' => 'in', 'content' => 'Is there a student discount available?', 'time' => now()->subHours(1)],
+                    ['dir' => 'out', 'content' => 'Yes! We offer 20% off for students. Do you have a valid student ID?', 'time' => now()->subHours(1)->addMinutes(3)],
+                    ['dir' => 'in', 'content' => 'Yes I do! How do I verify it?', 'time' => now()->subMinutes(20)],
+                    ['dir' => 'out', 'content' => 'You can upload a photo of your student ID or email us a scan at students@chathubb.test', 'time' => now()->subMinutes(18)],
+                    ['dir' => 'in', 'content' => 'Perfect, sending it now!', 'time' => now()->subMinutes(2)],
                 ],
             ],
         ];
